@@ -93,12 +93,17 @@
 }
 
 .shadow__btn {
+  all: unset;
+  display: inline-block;
   padding: 4px 4px;
   border: none;
   color: #fff;
   border-radius: 2px;
+  font-family: 'Segoe UI', sans-serif;
+  text-align: center;
   font-weight: 800;
   transition: 0.3s;
+  box-shadow: 0 0 0 transparent;
   transition-property: box-shadow;
 }
 
@@ -111,6 +116,11 @@
   color: rgb(30, 105, 185);
   box-shadow: 0 0 5px rgb(45, 120, 200);
   text-decoration: none;
+}
+
+.shadow__btn:active {
+  transform: scale(0.98);
+  box-shadow: 0 0 5px rgb(45, 120, 200);
 }
 
 .a {
