@@ -19,6 +19,7 @@
 
 
 .terminal-loader {
+  all: unset;
   border: 0.1em solid #333;
   background-color: #1a1a1a;
   color: #0f0;
