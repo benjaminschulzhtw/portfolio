@@ -130,6 +130,7 @@
 
 /* Dark Mode Hintergrund und Zentrierung */
 body {
+  overflow: hidden;
   background-color: #121212;
   display: flex;
   justify-content: center;
