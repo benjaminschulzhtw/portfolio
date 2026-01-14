@@ -1,49 +1,668 @@
-<!doctype html>
-<html class="no-js" lang="">
-
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title></title>
-  <link rel="stylesheet" href="style.css">
-  <meta name="description" content="">
-
-  <meta property="og:title" content="">
-  <meta property="og:type" content="">
-  <meta property="og:url" content="">
-  <meta property="og:image" content="">
-  <meta property="og:image:alt" content="">
-
-  <link rel="icon" href="/favicon.ico" sizes="any">
-  <link rel="icon" href="/icon.svg" type="image/svg+xml">
-  <link rel="apple-touch-icon" href="icon.png">
-
-  <link rel="manifest" href="site.webmanifest">
-  <meta name="theme-color" content="#fafafa">
-</head>
-
-<body>
-
-<!-- From Uiverse.io by jeremyssocial -->
-<div class="terminal-loader">
-  <div class="terminal-header">
-    <div class="terminal-title">Benjamin Schulz</div>
-    <div class="terminal-controls">
-      <div class="control close"></div>
-      <div class="control minimize"></div>
-      <div class="control maximize"></div>
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Portfolio | Benjamin Schulz</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="cursor-glow" aria-hidden="true"></div>
+    <div class="scroll-progress" aria-hidden="true">
+      <div class="scroll-progress__bar"></div>
     </div>
-  </div>
-  <div class="text">work in progress...</div>
-  <div class="contact">
-    //contact here:
-    <button class="shadow__btn", onclick="window.location.href='https://www.linkedin.com/in/benjamin-schulz-963bb434a/';">
-      in
-    </button>
-  </div>
-</div>
+    <header class="hero">
+      <nav class="nav">
+        <div class="nav-links">
+          <a href="#skills" data-i18n="nav.skills">Skills</a>
+          <a href="#experience" data-i18n="nav.experience">Karriere</a>
+          <a href="#projects" data-i18n="nav.projects">Projekte</a>
+          <a href="#contact" data-i18n="nav.contact">Kontakt</a>
+        </div>
+        <button class="lang-toggle" id="lang-toggle" type="button" aria-label="Sprache wechseln">
+          EN
+        </button>
+      </nav>
+      <div class="hero-content">
+        <div>
+          <p class="eyebrow" data-i18n="hero.eyebrow">Portfolio</p>
+          <h1>Benjamin Schulz</h1>
+          <p class="subtitle" data-i18n="hero.subtitle">
+            Angewandte Informatik · Full-Stack-Entwicklung
+          </p>
+          <p class="summary" data-i18n="hero.summary">
+            Ich bin ein 21-jähriger Student des 4. Semesters der Angewandten Informatik aus Berlin. Mit fundierten theoretischen Kenntnissen aus meinem Studium verfolge ich aktuell das Ziel, diese praxisnahe einzusetzen und zu erweitern.
+          </p>
+          <div class="hero-tags">
+            <span>Java</span>
+            <span>Spring</span>
+            <span>Web App Developing</span>
+            <span>Full-Stack</span>
+          </div>
+        </div>
+        <div
+          class="hero-card trading-card"
+          id="trading-card"
+          data-tilt
+        >
+          <div class="card-header">
+            <div>
+              <p class="card-type">DEVELOPER</p>
+              <h2 class="card-title">BENJA</h2>
+            </div>
+            <div class="card-level">
+              <span>LVL</span>
+              <strong>21</strong>
+            </div>
+          </div>
+          <div class="hero-photo-wrapper card-art">
+            <img
+              class="hero-photo"
+              src="src/benja.png"
+              alt="Portrait von Benjamin Schulz"
+              loading="lazy"
+            />
+          </div>
+          <div class="card-details">
+            <div class="detail-row">
+              <span>STUDIES:</span>
+              <strong>APPLIED COMPUTER SCIENCE</strong>
+            </div>
+            <div class="detail-row">
+              <span>LIVING IN:</span>
+              <strong>BERLIN, GERMANY</strong>
+            </div>
+          </div>
+          <div class="card-divider" aria-hidden="true"></div>
+          <div class="card-stats">
+            <h3>STATS:</h3>
+            <div class="stat-grid">
+              <div class="stat">
+                <span>AGE</span>
+                <span class="stat-value">21</span>
+              </div>
+              <div class="stat">
+                <span>SEMESTER</span>
+                <span class="stat-value">4</span>
+              </div>
+              <div class="stat">
+                <span>LINES OF CODE WRITTEN</span>
+                <span class="stat-value">16094</span>
+              </div>
+              <div class="stat">
+                <span>BUGS FIXED</span>
+                <span class="stat-value">67</span>
+              </div>
+            </div>
+          </div>
+          <div class="card-divider" aria-hidden="true"></div>
+          <div class="card-abilities">
+            <h3>ABILITYS:</h3>
+            <ul>
+              <li>GO OUT WITH FRIENDS</li>
+              <li>PLAY LEAGUE OF LEGENDS</li>
+              <li>CODE</li>
+              <li>PLAY SOCCER</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </header>
+    <main>
+      <section id="skills" class="section">
+        <div class="section-header">
+          <h2 data-i18n="skills.title">Skills</h2>
+          <p data-i18n="skills.lede">Technologien und Kompetenzen, die meine Arbeit prägen.</p>
+        </div>
+        <div class="grid">
+          <div class="card">
+            <h3 data-i18n="skills.dev.title">Programmierung</h3>
+            <ul>
+              <li data-i18n="skills.dev.item1">Java &amp; objektorientierte Entwicklung</li>
+              <li data-i18n="skills.dev.item2">Web-Apps mit HTML, CSS, JavaScript</li>
+              <li data-i18n="skills.dev.item3">Datenverarbeitung (CSV/TXT) &amp; Auswertung</li>
+              <li data-i18n="skills.dev.item4">Datenbankadministration mit SQL</li>
+              <li data-i18n="skills.dev.item5">Anroid-Entwicklung mit Kotlin</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3 data-i18n="skills.product.title">Produkt &amp; Medien</h3>
+            <ul>
+              <li data-i18n="skills.product.item1">App- und Interface-Design mit Canva und Affinity</li>
+              <li data-i18n="skills.product.item2">Prototyping &amp; User Flows mit Figma</li>
+              <li data-i18n="skills.product.item3">Storytelling für Projekte</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3 data-i18n="skills.soft.title">Soft Skills</h3>
+            <ul>
+              <li data-i18n="skills.soft.item1">Teamwork</li>
+              <li data-i18n="skills.soft.item2">Teamkommunikation &amp; Feedbackkultur</li>
+              <li data-i18n="skills.soft.item3">Strukturierte Projektplanung</li>
+              <li data-i18n="skills.soft.item4">Flexibilität</li>
+            </ul>
+          </div>
+        </div>
+      </section>
 
+      <section id="experience" class="section alt">
+        <div class="section-header">
+          <h2 data-i18n="experience.title">Karriere</h2>
+          <p data-i18n="experience.lede">
+            Meine bisherige Laufbahn.
+          </p>
+        </div>
+        <div class="timeline">
+          <div class="timeline-item">
+            <span class="timeline-year" data-i18n="experience.item1.year">2019</span>
+            <div>
+              <h3 data-i18n="experience.item1.title">Schülerpraktikum Tierhof Marzahn</h3>
+              <p data-i18n="experience.item1.body">
+                Als Kind wollte ich immer mit Tieren arbeiten und habe deshalb in der 9. Klasse ein Schülerpraktikum
+                auf einem Tierhof gemacht. Es war eigentlich sehr spaßig, aber ich mochte die Chefin nicht.
+              </p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <span class="timeline-year" data-i18n="experience.item2.year">2020 - 2025</span>
+            <div>
+              <h3 data-i18n="experience.item2.title">Verkäufer bei LIDL</h3>
+              <p data-i18n="experience.item2.body">
+                Mit 16 Jahren habe ich meinen ersten Job als Verkäufer begonnen. Neben dem Abitur bis hinein ins Studium
+                habe ich dort hauptsächlich Regale eingeräumt und Kunden abkassiert.
+              </p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <span class="timeline-year" data-i18n="experience.item3.year">2022</span>
+            <div>
+              <h3 data-i18n="experience.item3.title">Abitur</h3>
+              <p data-i18n="experience.item3.body">
+                Ich habe mein Abitur mit den Leistungskursen Mathematik und Kunst erfolgreich bestanden.
+              </p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <span class="timeline-year" data-i18n="experience.item4.year">2023 - 2024</span>
+            <div>
+              <h3 data-i18n="experience.item4.title">B. Sc. Medieninformatik (BHT)</h3>
+              <p data-i18n="experience.item4.body">
+                Ich habe ein Jahr den Studiengang für Medieninformatik besucht, in welchem ich bereits grundlegende Kenntnisse der Informatik,
+                Programmierung sowie des Designs erlernen konnte.
+              </p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <span class="timeline-year" data-i18n="experience.item5.year">seit April 2024</span>
+            <div>
+              <h3 data-i18n="experience.item5.title">B. Sc. Angewandte Informatik (HTW)</h3>
+              <p data-i18n="experience.item5.body">
+                Zum Sommersemester 2024 habe ich, aufgrund persönlicher Interssen, von der Medieninformatik zur Angewandten Informatik gewechselt.
+              </p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <span class="timeline-year" data-i18n="experience.item6.year">seit November 2025</span>
+            <div>
+              <h3 data-i18n="experience.item6.title">Entwickler bei Markus Friedrich Datentechnik</h3>
+              <p data-i18n="experience.item6.body">
+                Als Werkstudent sammle ich aktuell erste praktische Erfahrungen als Entwickler für ein kleines Unternehmen,
+                welches sich mit kaufmännischen und technischen Softwarelösungen für das Dachdecken beschäftigt.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
 
-</body>
+      <section id="projects" class="section">
+        <div class="section-header">
+          <h2 data-i18n="projects.title">Projects</h2>
+          <p data-i18n="projects.lede">Hands-on software solutions that show my learning progress.</p>
+        </div>
 
+        <div class="project-list">
+          <a class="project-card" href="#" aria-label="Recycling Tracker (Design)">
+            <!-- TODO: Link für dieses Projekt einsetzen -->
+            <div class="project-header">
+              <h3 data-i18n="projects.item1.title">Recycling Tracker (Design)</h3>
+                <span data-i18n="projects.item1.tag">Summer 2023: Media Design</span>
+            </div>
+            <ul>
+              <li data-i18n="projects.item1.point1">
+                The task was to design a mobile app with a sustainable purpose.
+              </li>
+              <li data-i18n="projects.item1.point2">
+                In Figma, my group and I designed a tracker to monitor personal recycling.
+              </li>
+              <li data-i18n="projects.item1.point3">
+                The evaluation criteria were color choice, simple UI usability, and presenting the result.
+              </li>
+              <li data-i18n="projects.item1.point4">
+                Grade: 1.0
+              </li>
+            </ul>
+          </a>
+
+          <a class="project-card" href="https://github.com/benjaminschulzhtw/basic-CRM-System-for-health-insurance" aria-label="Customer Relationship Management System">
+            <div class="project-header">
+              <h3 data-i18n="projects.item2.title">Customer Relationship Management System</h3>
+              <span data-i18n="projects.item2.tag">Summer 2024: Programming</span>
+            </div>
+            <ul>
+              <li data-i18n="projects.item2.point1">The task was to write a system that manages health insurance customer data via user input.</li>
+              <li data-i18n="projects.item2.point2">As part of an additional task, a chatbot was implemented to assess the risk of COVID-19 infection.</li>
+              <li data-i18n="projects.item2.point3">Programming language: Java</li>
+            </ul>
+          </a>
+
+          <a class="project-card" href="https://github.com/HTW-Berlin-Dabrowski/pr-fungsaufgabe-benjaminschulzhtw" aria-label="Weather Data Tool">
+            <div class="project-header">
+              <h3 data-i18n="projects.item3.title">Weather Data Tool</h3>
+              <span data-i18n="projects.item3.tag">Winter 2024/25: Programming</span>
+            </div>
+            <ul>
+              <li data-i18n="projects.item3.point1">The task was to develop a tool that calculates annual temperature statistics from publicly available weather data.</li>
+              <li data-i18n="projects.item3.point2">Programming language: Java</li>
+              <li data-i18n="projects.item3.point3">Grade: 1.0</li>
+            </ul>
+          </a>
+
+          <a class="project-card" href="https://github.com/benjaminschulzhtw/MatchYourMunch" aria-label="Android App">
+            <div class="project-header">
+              <h3 data-i18n="projects.item4.title">Android App</h3>
+              <span data-i18n="projects.item4.tag">Summer 2025: Mobile Operating Systems and Networks</span>
+            </div>
+            <ul>
+              <li data-i18n="projects.item4.point1">The task was to program a useful Android app with at least two self-selected focus areas.</li>
+              <li data-i18n="projects.item4.point2">My chosen focuses: location services (GPS) + database connection (MySQL).</li>
+              <li data-i18n="projects.item4.point3">Programming language: Kotlin</li>
+              <li data-i18n="projects.item4.point4">Grade: 1.3</li>
+            </ul>
+          </a>
+
+          <article class="project-card highlight">
+            <div class="project-header">
+              <h3 data-i18n="projects.item5.title">Single Page Application</h3>
+              <span data-i18n="projects.item5.tag">Winter 2025/26: Web App Development</span>
+            </div>
+            <p class="notice" data-i18n="projects.item5.notice">This project is currently in development.</p>
+            <p class="notice" data-i18n="projects.item5.notice2">
+              The task is to build a single page application that highlights Berlin locations considered non-sustainable and encourages people to choose the car over bus, train, or bike.
+            </p>
+          </article>
+
+        </div>
+      </section>
+
+      <section id="contact" class="section alt">
+        <div class="section-header">
+          <h2 data-i18n="contact.title">Contact</h2>
+        </div>
+        <div class="contact-card">
+          <div>
+            <h3 data-i18n="contact.cardTitle">Let&apos;s connect</h3>
+            <p data-i18n="contact.body">
+              Happy to discuss new projects and collaborations in software development or media projects.
+            </p>
+          </div>
+          <div>
+            <p class="contact-info" data-i18n="contact.linkedinLabel">LinkedIn</p>
+            <a href="https://www.linkedin.com/in/benjamin-schulz-963bb434a/" target="_blank" rel="noreferrer">
+              linkedin.com/in/benjamin-schulz-963bb434a/
+            </a>
+          </div>
+          <div>
+            <p class="contact-info" data-i18n="contact.emailLabel">Email</p>
+            <a href="mailto:benjamin.schulz399@gmail.com">benjamin.schulz399@gmail.com</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p data-i18n="footer.copy">© 2024 Benjamin Schulz. Alle Rechte vorbehalten.</p>
+    </footer>
+
+    <script>
+      const translations = {
+        de: {
+          "nav.skills": "Skills",
+          "nav.experience": "Karriere",
+          "nav.projects": "Projekte",
+          "nav.contact": "Kontakt",
+          "hero.eyebrow": "Portfolio",
+          "hero.subtitle": "Angewandte Informatik · Full-Stack-Entwicklung",
+          "hero.summary":
+            "Ich bin ein 21-jähriger Student des 4. Semesters der Angewandten Informatik aus Berlin. Mit fundierten theoretischen Kenntnissen aus meinem Studium verfolge ich aktuell das Ziel, diese praxisnahe einzusetzen und zu erweitern.",
+          "hero.photoCaption": "Portrait von Benjamin Schulz",
+          "hero.card.type": "Spielkarte · Full-Stack",
+          "hero.card.title": "Benjamin \"Stackmon\"",
+          "hero.card.levelLabel": "Lvl",
+          "hero.card.levelValue": "21",
+          "hero.card.statsTitle": "Stats",
+          "hero.card.stat1.label": "Alter",
+          "hero.card.stat1.value": "21",
+          "hero.card.stat2.label": "Semester",
+          "hero.card.stat2.value": "4",
+          "hero.card.stat3.label": "Funny",
+          "hero.card.stat3.value": "67",
+          "hero.card.stat4.label": "Good Looking",
+          "hero.card.stat4.value": "99",
+          "hero.card.abilitiesTitle": "Hobbys",
+          "hero.card.ability1": "Mit freunden was unternehmen",
+          "hero.card.ability2": "League of Legends",
+          "hero.card.ability3": "Coding",
+          "hero.card.ability4": "Fußball",
+          "hero.card.footer": "Legendärer Berlin-Dev · Typ Grün",
+          "skills.title": "Skills",
+          "skills.lede": "Technologien und Kompetenzen, die meine Arbeit prägen.",
+          "skills.dev.title": "Programmierung",
+          "skills.dev.item1": "Java &amp; objektorientierte Entwicklung",
+          "skills.dev.item2": "Web-Apps mit HTML, CSS, JavaScript",
+          "skills.dev.item3": "Datenverarbeitung (CSV/TXT) &amp; Auswertung",
+          "skills.dev.item4": "Datenbankadministration mit SQL",
+          "skills.dev.item5": "Android-Entwicklung mit Kotlin",
+          "skills.product.title": "Produkt &amp; Medien",
+          "skills.product.item1": "App- und Interface-Design mit Canva und Affinity",
+          "skills.product.item2": "Prototyping &amp; User Flows mit Figma",
+          "skills.product.item3": "Storytelling für Projekte",
+          "skills.soft.title": "Soft Skills",
+          "skills.soft.item1": "Teamwork",
+          "skills.soft.item2": "Teamkommunikation &amp; Feedbackkultur",
+          "skills.soft.item3": "Strukturierte Projektplanung",
+          "skills.soft.item4": "Flexibilität",
+          "experience.title": "Karriere",
+          "experience.lede": "Meine bisherige Laufbahn.",
+          "experience.item1.year": "2019",
+          "experience.item1.title": "Schülerpraktikum Tierhof Marzahn",
+          "experience.item1.body":
+            " Als Kind wollte ich immer mit Tieren arbeiten und habe deshalb in der 9. Klasse ein Schülerpraktikum\n" +
+                  "                auf einem Tierhof gemacht. Es war eigentlich sehr spaßig, aber ich mochte die Chefin nicht.",
+          "experience.item2.year": "2020 - 2025",
+          "experience.item2.title": "Verkäufer bei LIDL",
+          "experience.item2.body":
+            "Mit 16 Jahren habe ich meinen ersten Job als Verkäufer begonnen. Neben dem Abitur bis hinein ins Studium habe ich dort hauptsächlich Regale eingeräumt und Kunden abkassiert.",
+          "experience.item3.year": "2022",
+          "experience.item3.title": "Abitur",
+          "experience.item3.body": "Ich habe mein Abitur mit den Leistungskursen Mathematik und Kunst erfolgreich bestanden.",
+          "experience.item4.year": "2023 - 2024",
+          "experience.item4.title": "B. Sc. Medieninformatik (BHT)",
+          "experience.item4.body": "Ich habe 1 Jahr den Studiengang für Medieninformatik besucht, in welchem ich bereits grundlegende Kenntnisse der Informatik, Programmierung sowie des Designs erlernen konnte.",
+          "experience.item5.year": "seit April 2024",
+          "experience.item5.title": "B. Sc. Angewandte Informatik (HTW)",
+          "experience.item5.body": "Zum Sommersemester 2024 habe ich aufgrund persönlicher Interessen von der Medieninformatik zur Angewandten Informatik gewechselt.",
+          "experience.item6.year": "seit November 2025",
+          "experience.item6.title": "Entwickler bei Markus Friedrich Datentechnik",
+          "experience.item6.body":
+            "Als Werkstudent sammle ich aktuell erste praktische Erfahrungen als Entwickler für ein kleines Unternehmen, welches sich mit kaufmännischen und technischen Softwarelösungen für das Dachdecken beschäftigt.",
+          "projects.title": "Projekte",
+          "projects.lede": "Meine bisherigen Softwarelösungen, die meinen Lernprozess zeigen.",
+          "projects.item1.title": "Recycling Tracker (Design)",
+          "projects.item1.tag": "Sommer 2023: Mediendesign",
+          "projects.item1.point1":
+            "Die Aufgabe war es, eine mobile App mit nachhaltigem Zweck zu designen.",
+          "projects.item1.point2":
+            "Ich habe mit meiner Gruppe in Figma einen Tracker designed, der dazu dient, eigenes Recycling zu dokumentieren und zu verfolgen.",
+          "projects.item1.point3":
+            "Bewertungskriterien waren die Idee, das Farbkonzept, die Icons, einfache Bedienung der UI und die Präsentation des Ergebnisses.",
+          "projects.item1.point4": "Bewertung: 1.0",
+          "projects.item2.title": "Customer Relationship Management System",
+          "projects.item2.tag": "Sommer 2024: Programmierung",
+          "projects.item2.point1": "Die Aufgabe war es, ein System zu schreiben, welches per Nutzereingabe Kundendaten verwaltet.",
+          "projects.item2.point2": "Resultierend aus einer zusätzlichen Aufgabe, wurde nachträglich noch ein Chatbot implementiert, welcher das Risiko einer COVID-19-Infektion einschätzt.",
+          "projects.item2.point3": "Programmiersprache: Java",
+          "projects.item3.title": "Wetterdaten-Tool",
+          "projects.item3.tag": "Winter 2024/25: Programmierung",
+          "projects.item3.point1": "Die Aufgabe war es, ein Tool zu entwickeln, welches Jahrestemperaturstatistiken aus öffentlich verfügbaren Wetter-Messdaten berechnet.",
+          "projects.item3.point2": "Programmiersprache: Java",
+          "projects.item3.point3": "Bewertung: 1.0",
+          "projects.item4.title": "Android App",
+          "projects.item4.tag": "Sommer 2025: Mobile Betriebssysteme und Netzwerke",
+          "projects.item4.point1": "Die Aufgabe war es, eine nützliche Android-App zu programmieren, die über mindestens zwei selbstgewählte Schwerpunkte verfügt.",
+          "projects.item4.point2": "Meine gewählten Schwerpunkte: Standortfunktion (GPS) + Datenbankanbindung (MySQL).",
+          "projects.item4.point3": "Programmiersprache: Kotlin",
+          "projects.item4.point4": "Bewertung: 1.3",
+          "projects.item5.title": "Single Page Application",
+          "projects.item5.tag": "Winter 2025/26: Web App Development",
+          "projects.item5.notice":
+            "Dieses Projekt befindet sich noch in Entwicklung.",
+          "projects.item5.notice2": "Die Aufgabe ist es, eine Single Page Application zu entwickeln, die Standorte in Berlin zeigt, welche dafür sorgen, dass viele Personen eher mit dem Auto als mit Bus, Bahn oder Fahrrad fahren.",
+          "contact.title": "Kontakt",
+          "contact.cardTitle": "Let&apos;s connect",
+          "contact.body":
+            "Gern tausche ich mich zu neuen Projekten aus und freue mich über Kooperationen in Softwareentwicklung oder Medienprojekten.",
+          "contact.linkedinLabel": "LinkedIn",
+          "contact.emailLabel": "Email",
+          "footer.copy": "© 2026 Benjamin Schulz. Alle Rechte vorbehalten."
+        },
+        en: {
+          "nav.skills": "Skills",
+          "nav.experience": "Career",
+          "nav.projects": "Projects",
+          "nav.contact": "Contact",
+          "hero.eyebrow": "Portfolio",
+          "hero.subtitle": "Applied Computer Science · Full-Stack-Development",
+          "hero.summary":
+            "I am a 21-year-old student in the 4th semester of Applied Computer Science from Berlin. With solid theoretical knowledge from my studies, I am currently aiming to apply and expand it in a practical way.",
+          "hero.photoCaption": "Portrait of Benjamin Schulz",
+          "hero.card.type": "Trading Card · Full-Stack",
+          "hero.card.title": "Benjamin \"Stackmon\"",
+          "hero.card.levelLabel": "Lvl",
+          "hero.card.levelValue": "21",
+          "hero.card.statsTitle": "Stats",
+          "hero.card.stat1.label": "Age",
+          "hero.card.stat1.value": "21",
+          "hero.card.stat2.label": "Semester",
+          "hero.card.stat2.value": "4",
+          "hero.card.stat3.label": "Funny",
+          "hero.card.stat3.value": "67",
+          "hero.card.stat4.label": "Good Looking",
+          "hero.card.stat4.value": "99",
+          "hero.card.abilitiesTitle": "Hobbies",
+          "hero.card.ability1": "Hanging out with friends",
+          "hero.card.ability2": "League of Legends",
+          "hero.card.ability3": "Coding",
+          "hero.card.ability4": "Football",
+          "hero.card.footer": "Legendary Berlin Dev · Green Type",
+          "skills.title": "Skills",
+          "skills.lede": "Technologies and strengths that shape my work.",
+          "skills.dev.title": "Development",
+          "skills.dev.item1": "Java &amp; object-oriented development",
+          "skills.dev.item2": "Web apps with HTML, CSS, JavaScript",
+          "skills.dev.item3": "Data processing (CSV/TXT) &amp; analysis",
+          "skills.dev.item4": "Database Administration with SQL",
+          "skills.dev.item5": "Android-Development with Kotlin",
+          "skills.product.title": "Product &amp; Media",
+          "skills.product.item1": "App and interface design",
+          "skills.product.item2": "Prototyping &amp; user flows",
+          "skills.product.item3": "Storytelling for projects",
+          "skills.soft.title": "Soft Skills",
+          "skills.soft.item1": "Teamwork",
+          "skills.soft.item2": "Team communication &amp; feedback culture",
+          "skills.soft.item3": "Structured project planning",
+          "skills.soft.item4": "Flexibility",
+          "experience.title": "Career",
+          "experience.lede": "My career so far.",
+          "experience.item1.year": "2019",
+          "experience.item1.title": "Student internship 'Tierhof Marzahn'",
+          "experience.item1.body":
+                  " As a child I always wanted to work with animals and therefore I did a student internship in 9th grade\n" +
+                  "                on an animal farm. It was actually very funny, but I didn't like the boss.",
+          "experience.item2.year": "2020 - 2025",
+          "experience.item2.title": "Shop assistant @ LIDL",
+          "experience.item2.body":
+                  "At 16, I started my first job as a sales assistant. Alongside my high school graduation and continuing through university, I mainly stocked shelves and handled customer payments.",
+          "experience.item3.year": "2022",
+          "experience.item3.title": "Abitur (German university entrance exam)",
+          "experience.item3.body": "I successfully passed my Abitur with advanced courses in mathematics and art.",
+          "experience.item4.year": "2023 - 2024",
+          "experience.item4.title": "B. Sc. Media Informatics (BHT)",
+          "experience.item4.body": "I attended the Media Informatics course for one year, during which I was able to acquire basic knowledge of computer science, programming and design.",
+          "experience.item5.year": "since April 2024",
+          "experience.item5.title": "B. Sc. Applied Computer Science (HTW)",
+          "experience.item5.body": "Due to personal interests, I switched from Media Informatics to Applied Computer Science for the summer semester of 2024.",
+          "experience.item6.year": "since November 2025",
+          "experience.item6.title": "Developer @ Markus Friedrich Datentechnik",
+          "experience.item6.body":
+                  "As a working student, I am currently gaining initial practical experience as a developer for a small company that deals with commercial and technical software solutions for roofing.",
+          "projects.title": "Projects",
+          "projects.lede": "Hands-on software solutions that show my learning progress.",
+          "projects.item1.title": "Recycling Tracker (Design)",
+          "projects.item1.tag": "Summer 2023: Media Design",
+          "projects.item1.point1":
+            "The task was to design a mobile app with a sustainable purpose.",
+          "projects.item1.point2":
+            "In Figma, my group and I designed a tracker to monitor personal recycling.",
+          "projects.item1.point3":
+            "The evaluation criteria were the idea, color concept, icons, simple UI usability, and presenting the result.",
+          "projects.item1.point4": "Grade: 1.0",
+          "projects.item2.title": "Customer Relationship Management System",
+          "projects.item2.tag": "Summer 2024: Programming",
+          "projects.item2.point1": "The task was to write a system that manages health insurance customer data via user input.",
+          "projects.item2.point2": "As part of an additional task, a chatbot was implemented to assess the risk of COVID-19 infection.",
+          "projects.item2.point3": "Programming language: Java",
+          "projects.item3.title": "Weather Data Tool",
+          "projects.item3.tag": "Winter 2024/25: Programming",
+          "projects.item3.point1": "The task was to develop a tool that calculates annual temperature statistics from publicly available weather data.",
+          "projects.item3.point2": "Programming language: Java",
+          "projects.item3.point3": "Grade: 1.0",
+          "projects.item4.title": "Android App",
+          "projects.item4.tag": "Summer 2025: Mobile Operating Systems and Networks",
+          "projects.item4.point1": "The task was to program a useful Android app with at least two self-selected focus areas.",
+          "projects.item4.point2": "My chosen focuses: location services (GPS) + database connection (MySQL).",
+          "projects.item4.point3": "Programming language: Kotlin",
+          "projects.item4.point4": "Grade: 1.3",
+          "projects.item5.title": "Single Page Application",
+          "projects.item5.tag": "Winter 2025/26: Web App Development",
+          "projects.item5.notice":
+            "This project is currently in development.",
+          "projects.item5.notice2": "The task is to build a single page application that highlights Berlin locations considered non-sustainable and encourages people to choose the car over bus, train, or bike.",
+          "contact.title": "Contact",
+          "contact.lede": "Interested in collaborating or starting a project?",
+          "contact.cardTitle": "Let&apos;s connect",
+          "contact.body":
+            "Happy to discuss new projects and collaborations in software development or media projects.",
+          "contact.linkedinLabel": "LinkedIn",
+          "contact.emailLabel": "Email",
+          "footer.copy": "© 2026 Benjamin Schulz. All rights reserved."
+        }
+      };
+
+      const toggleButton = document.getElementById("lang-toggle");
+      const cursorGlow = document.querySelector(".cursor-glow");
+      const scrollProgressBar = document.querySelector(".scroll-progress__bar");
+      const navLinks = document.querySelectorAll(".nav-links a");
+      const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      let currentLang = "de";
+
+      const applyLanguage = (lang) => {
+        currentLang = lang;
+        document.documentElement.lang = lang;
+        document.querySelectorAll("[data-i18n]").forEach((element) => {
+          const key = element.dataset.i18n;
+          if (translations[lang][key]) {
+            element.innerHTML = translations[lang][key];
+          }
+        });
+        toggleButton.textContent = lang === "de" ? "EN" : "DE";
+        toggleButton.setAttribute(
+          "aria-label",
+          lang === "de" ? "Switch to English" : "Auf Deutsch umschalten"
+        );
+      };
+
+      toggleButton.addEventListener("click", () => {
+        applyLanguage(currentLang === "de" ? "en" : "de");
+      });
+
+      navLinks.forEach((link) => {
+        link.addEventListener("click", (event) => {
+          const targetId = link.getAttribute("href")?.slice(1);
+          const targetSection = document.getElementById(targetId);
+
+          if (targetSection) {
+            event.preventDefault();
+            targetSection.scrollIntoView({
+              behavior: prefersReducedMotion ? "auto" : "smooth",
+              block: "start"
+            });
+            history.pushState(null, "", `#${targetId}`);
+          }
+        });
+      });
+
+      let targetX = window.innerWidth / 2;
+      let targetY = window.innerHeight / 2;
+      let currentX = targetX;
+      let currentY = targetY;
+
+      const animateGlow = () => {
+        currentX += (targetX - currentX) * 0.18;
+        currentY += (targetY - currentY) * 0.18;
+        cursorGlow.style.transform = `translate(${currentX}px, ${currentY}px)`;
+        requestAnimationFrame(animateGlow);
+      };
+
+      window.addEventListener("mousemove", (event) => {
+        targetX = event.clientX - 110;
+        targetY = event.clientY - 110;
+      });
+
+      const updateScrollProgress = () => {
+        if (!scrollProgressBar) {
+          return;
+        }
+
+        const scrollTop = window.scrollY;
+        const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const progress = scrollHeight > 0 ? (scrollTop / scrollHeight) * 100 : 0;
+
+        scrollProgressBar.style.width = `${progress}%`;
+      };
+
+      window.addEventListener("scroll", updateScrollProgress, { passive: true });
+      window.addEventListener("resize", updateScrollProgress);
+
+      const tiltCard = document.querySelector("[data-tilt]");
+
+      if (tiltCard && !prefersReducedMotion) {
+        const resetTilt = () => {
+          tiltCard.style.transform = "perspective(900px) rotateX(0deg) rotateY(0deg)";
+          tiltCard.style.setProperty("--glow-x", "50%");
+          tiltCard.style.setProperty("--glow-y", "50%");
+        };
+
+        const handleTilt = (event) => {
+          const rect = tiltCard.getBoundingClientRect();
+          const x = event.clientX - rect.left;
+          const y = event.clientY - rect.top;
+          const xPercent = x / rect.width;
+          const yPercent = y / rect.height;
+          const rotateX = (yPercent - 0.5) * -16;
+          const rotateY = (xPercent - 0.5) * 16;
+
+          tiltCard.style.transform = `perspective(900px) rotateX(${rotateX.toFixed(
+            2
+          )}deg) rotateY(${rotateY.toFixed(2)}deg)`;
+          tiltCard.style.setProperty("--glow-x", `${(xPercent * 100).toFixed(1)}%`);
+          tiltCard.style.setProperty("--glow-y", `${(yPercent * 100).toFixed(1)}%`);
+        };
+
+        tiltCard.addEventListener("mousemove", handleTilt);
+        tiltCard.addEventListener("mouseleave", resetTilt);
+        tiltCard.addEventListener("blur", resetTilt);
+        resetTilt();
+      }
+
+      applyLanguage(currentLang);
+      updateScrollProgress();
+      requestAnimationFrame(animateGlow);
+    </script>
+  </body>
 </html>
