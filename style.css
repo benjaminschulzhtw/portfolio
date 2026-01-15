@@ -660,7 +660,65 @@ h1 {
   color: var(--muted);
 }
 
+@media (max-width: 1024px) {
+  .hero {
+    padding: 40px 6vw 64px;
+  }
+
+  .section {
+    padding: 56px 6vw;
+  }
+
+  .hero-content {
+    gap: 24px;
+  }
+
+  .hero-card {
+    width: min(420px, 100%);
+  }
+
+  .project-card,
+  .contact-card,
+  .card {
+    padding: 22px;
+  }
+}
+
+@media (max-width: 900px) {
+  .nav {
+    margin-bottom: 36px;
+  }
+
+  .nav-links {
+    gap: 16px;
+  }
+
+  .summary {
+    max-width: 100%;
+  }
+
+  .hero-tags {
+    gap: 8px;
+  }
+
+  .project-header {
+    align-items: flex-start;
+  }
+}
+
 @media (max-width: 720px) {
+  .cursor-glow {
+    display: none;
+  }
+
+  .hero {
+    padding: 32px 5vw 56px;
+  }
+
+  .section {
+    padding: 44px 5vw;
+  }
+
   .nav {
     flex-direction: column;
     align-items: flex-start;
@@ -668,6 +726,30 @@ h1 {
 
   .nav-links {
     flex-wrap: wrap;
+    width: 100%;
+    gap: 12px;
+  }
+
+  .lang-toggle {
+    align-self: flex-start;
+  }
+
+  .hero-tags span {
+    font-size: 0.82rem;
+  }
+
+  .hero-card {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .card-art {
+    height: 190px;
+  }
+
+  .hero-photo {
+    width: 160px;
+    height: 210px;
   }
 
   .timeline::before {
@@ -693,5 +775,29 @@ h1 {
     grid-column: 1;
     text-align: left;
     justify-self: start;
+  }
+}
+
+@media (max-width: 520px) {
+  h1 {
+    font-size: 2.2rem;
+  }
+
+  .subtitle {
+    font-size: 1rem;
+  }
+
+  .project-card,
+  .contact-card,
+  .card {
+    padding: 18px;
+  }
+
+  .project-header span {
+    font-size: 0.82rem;
+  }
+
+  .scroll-progress {
+    height: 4px;
   }
 }
