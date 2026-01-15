@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Portfolio | Benjamin Schulz</title>
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="styles.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -53,7 +53,7 @@
         >
           <div class="card-header">
             <div>
-              <p class="card-type">DEVELOPER</p>
+              <p class="card-type">EPIC - DEVELOPER</p>
               <h2 class="card-title">BENJA</h2>
             </div>
             <div class="card-level">
@@ -107,7 +107,7 @@
             <ul>
               <li>GO OUT WITH FRIENDS</li>
               <li>PLAY LEAGUE OF LEGENDS</li>
-              <li>CODING</li>
+              <li>CODE</li>
               <li>PLAY SOCCER</li>
             </ul>
           </div>
@@ -227,7 +227,8 @@
         </div>
 
         <div class="project-list">
-          <a class="project-card" href="https://www.figma.com/proto/N9KOLoQDhlBJpSxzUg0Pbg/Recycling-Tracker?node-id=0-1&t=gL3ik6qytGBXPoov-1" aria-label="Recycling Tracker (Design)">
+          <a class="project-card" href="#" aria-label="Recycling Tracker (Design)">
+            <!-- TODO: Link für dieses Projekt einsetzen -->
             <div class="project-header">
               <h3 data-i18n="projects.item1.title">Recycling Tracker (Design)</h3>
                 <span data-i18n="projects.item1.tag">Summer 2023: Media Design</span>
@@ -248,7 +249,8 @@
             </ul>
           </a>
 
-          <a class="project-card" href="https://github.com/benjaminschulzhtw/basic-CRM-System-for-health-insurance" aria-label="Customer Relationship Management System">
+          <a class="project-card" href="#" aria-label="Customer Relationship Management System">
+            <!-- TODO: Link für dieses Projekt einsetzen -->
             <div class="project-header">
               <h3 data-i18n="projects.item2.title">Customer Relationship Management System</h3>
               <span data-i18n="projects.item2.tag">Summer 2024: Programming</span>
@@ -260,7 +262,8 @@
             </ul>
           </a>
 
-          <a class="project-card" href="https://github.com/HTW-Berlin-Dabrowski/pr-fungsaufgabe-benjaminschulzhtw" aria-label="Weather Data Tool">
+          <a class="project-card" href="#" aria-label="Weather Data Tool">
+            <!-- TODO: Link für dieses Projekt einsetzen -->
             <div class="project-header">
               <h3 data-i18n="projects.item3.title">Weather Data Tool</h3>
               <span data-i18n="projects.item3.tag">Winter 2024/25: Programming</span>
@@ -268,11 +271,12 @@
             <ul>
               <li data-i18n="projects.item3.point1">The task was to develop a tool that calculates annual temperature statistics from publicly available weather data.</li>
               <li data-i18n="projects.item3.point2">Programming language: Java</li>
-              <li data-i18n="projects.item3.point3">Grade: 1.0</li>
+              <li data-i18n="projects.item3.point3">Grade: 1.0<li>
             </ul>
           </a>
 
-          <a class="project-card" href="https://github.com/benjaminschulzhtw/MatchYourMunch" aria-label="Android App">
+          <a class="project-card" href="#" aria-label="Android App">
+            <!-- TODO: Link für dieses Projekt einsetzen -->
             <div class="project-header">
               <h3 data-i18n="projects.item4.title">Android App</h3>
               <span data-i18n="projects.item4.tag">Summer 2025: Mobile Operating Systems and Networks</span>
@@ -558,6 +562,7 @@
       const scrollProgressBar = document.querySelector(".scroll-progress__bar");
       const navLinks = document.querySelectorAll(".nav-links a");
       const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      const canUseHover = window.matchMedia("(pointer: fine)").matches;
       let currentLang = "de";
 
       const applyLanguage = (lang) => {
@@ -608,10 +613,13 @@
         requestAnimationFrame(animateGlow);
       };
 
-      window.addEventListener("mousemove", (event) => {
-        targetX = event.clientX - 110;
-        targetY = event.clientY - 110;
-      });
+      if (cursorGlow && canUseHover && !prefersReducedMotion) {
+        window.addEventListener("mousemove", (event) => {
+          targetX = event.clientX - 110;
+          targetY = event.clientY - 110;
+        });
+        requestAnimationFrame(animateGlow);
+      }
 
       const updateScrollProgress = () => {
         if (!scrollProgressBar) {
@@ -630,7 +638,7 @@
 
       const tiltCard = document.querySelector("[data-tilt]");
 
-      if (tiltCard && !prefersReducedMotion) {
+      if (tiltCard && !prefersReducedMotion && canUseHover) {
         const resetTilt = () => {
           tiltCard.style.transform = "perspective(900px) rotateX(0deg) rotateY(0deg)";
           tiltCard.style.setProperty("--glow-x", "50%");
@@ -661,7 +669,6 @@
 
       applyLanguage(currentLang);
       updateScrollProgress();
-      requestAnimationFrame(animateGlow);
     </script>
   </body>
 </html>
