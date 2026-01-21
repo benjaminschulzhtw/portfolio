@@ -500,6 +500,7 @@ h1 {
   position: relative;
   display: grid;
   gap: 32px;
+  --timeline-progress: 0%;
 }
 
 .timeline::before {
@@ -509,8 +510,21 @@ h1 {
   top: 0;
   bottom: 0;
   width: 2px;
-  background: var(--border);
+  background: rgba(148, 163, 184, 0.12);
   transform: translateX(-50%);
+}
+
+.timeline::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: 2px;
+  height: var(--timeline-progress);
+  background: linear-gradient(180deg, rgba(153, 250, 185, 0.2), var(--accent));
+  transform: translateX(-50%);
+  transition: height 0.3s ease-out;
+  box-shadow: 0 0 18px rgba(30, 215, 96, 0.35);
 }
 
 .timeline-item {
@@ -519,6 +533,10 @@ h1 {
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 64px;
   padding: 12px 0;
+  opacity: 0.35;
+  filter: grayscale(0.6);
+  transition: opacity 0.4s ease, transform 0.4s ease, filter 0.4s ease;
+  transform: translateY(14px);
 }
 
 .timeline-item::before {
@@ -529,9 +547,10 @@ h1 {
   width: 14px;
   height: 14px;
   border-radius: 50%;
-  background: var(--accent);
-  box-shadow: 0 0 0 6px rgba(30, 215, 96, 0.2);
+  background: rgba(148, 163, 184, 0.4);
+  box-shadow: 0 0 0 6px rgba(15, 23, 42, 0.3);
   transform: translateX(-50%);
+  transition: background 0.4s ease, box-shadow 0.4s ease;
 }
 
 .timeline-item > .timeline-year,
@@ -554,8 +573,34 @@ h1 {
 
 .timeline-year {
   font-weight: 700;
-  color: var(--accent);
+  color: rgba(148, 163, 184, 0.8);
   margin-bottom: 6px;
+}
+
+.timeline-item h3,
+.timeline-item p {
+  color: rgba(226, 232, 240, 0.6);
+  transition: color 0.4s ease;
+}
+
+.timeline-item.is-active {
+  opacity: 1;
+  filter: none;
+  transform: translateY(0);
+}
+
+.timeline-item.is-active::before {
+  background: var(--accent);
+  box-shadow: 0 0 0 6px rgba(30, 215, 96, 0.2), 0 0 16px rgba(30, 215, 96, 0.55);
+}
+
+.timeline-item.is-active .timeline-year {
+  color: var(--accent);
+}
+
+.timeline-item.is-active h3,
+.timeline-item.is-active p {
+  color: var(--text);
 }
 
 .project-list {
@@ -765,6 +810,11 @@ h1 {
     transform: none;
   }
 
+  .timeline::after {
+    left: 12px;
+    transform: none;
+  }
+
   .timeline-item {
     grid-template-columns: 1fr;
     gap: 12px;
@@ -783,6 +833,17 @@ h1 {
     grid-column: 1;
     text-align: left;
     justify-self: start;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .timeline::after {
+    transition: none;
+  }
+
+  .timeline-item {
+    transition: none;
+    transform: none;
   }
 }
 
