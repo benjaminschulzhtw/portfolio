@@ -632,6 +632,20 @@ h1 {
   background: #1b482d;
 }
 
+.project-card.prism {
+  color: var(--text);
+  position: relative;
+  border: 1px solid rgb(255, 255, 255);
+  background: linear-gradient(135deg, rgb(65, 151, 161), rgba(225, 224, 143, 0.56), rgba(153, 104, 171, 0.89));
+  overflow: hidden;
+}
+
+.project-card.prism > * {
+  color: var(--text);
+  position: relative;
+  z-index: 1;
+}
+
 .project-header {
   display: flex;
   justify-content: space-between;
