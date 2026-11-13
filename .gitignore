@@ -1,0 +1,14 @@
+.DS_Store
+.idea/
+
+# Wichtel-App: Abhängigkeiten, Build-Zwischenstände und Testausgaben
+wichteln-app/node_modules/
+wichteln-app/dist/
+wichteln-app/.angular/
+wichteln-app/.nx/
+wichteln-app/test-results/
+wichteln-app/playwright-report/
+wichteln-app/e2e/.fixture/
+
+# Persönliche Wichtel-Links: niemals committen
+wichteln-app/scripts/links.local.*

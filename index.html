@@ -2,8 +2,83 @@
 <html lang="de">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <title>Work in Progress</title>
+    <link rel="icon" href="./src/favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="./style.css">
+    <script>
+        /*
+         * Steht im Link ein persönlicher Wichtel-Code (schulz-benjamin.de/#ABC...),
+         * wird statt der Platzhalterseite die Wichtel-App aus /wichteln/ geladen.
+         * Ohne Code bleibt alles wie bisher.
+         *
+         * Der Code steht nur im Fragment und wird nie an den Server geschickt.
+         */
+        (function () {
+            var ALPHABET = /^[ABCDEFGHJKLMNPQRSTUVWXYZ23456789]{8,}$/;
+
+            function hasCode() {
+                var raw = location.hash.slice(1);
+                try {
+                    raw = decodeURIComponent(raw);
+                } catch (e) {
+                    /* kaputtes Encoding: roh weiterverwenden */
+                }
+                return ALPHABET.test(raw.toUpperCase().replace(/[^A-Z0-9]/g, ''));
+            }
+
+            var active = hasCode();
+            // Wechselt der Code bei offener Seite, wird sauber neu geladen.
+            addEventListener('hashchange', function () {
+                if (active || hasCode()) location.reload();
+            });
+            if (!active) return;
+
+            var root = document.documentElement;
+            root.classList.add('wichteln');
+            document.title = 'Wichteln 2026';
+
+            var theme = document.createElement('meta');
+            theme.name = 'theme-color';
+            theme.content = '#050a1c';
+            document.head.appendChild(theme);
+
+            // Eigene Dateien der Startseite auf feste Adressen festnageln, bevor die Basis wechselt
+            // (das Favicon wird sonst später im App-Ordner gesucht).
+            var links = document.querySelectorAll('link[href]');
+            for (var i = 0; i < links.length; i++) links[i].href = links[i].href;
+
+            // Ab hier zeigen alle relativen Pfade in den App-Ordner: Bilder, Worker, Lose.
+            var base = document.createElement('base');
+            base.href = '/wichteln/';
+            document.head.appendChild(base);
+
+            var css = document.createElement('link');
+            css.rel = 'stylesheet';
+            css.href = '/wichteln/styles.css';
+            document.head.appendChild(css);
+
+            document.addEventListener('DOMContentLoaded', function () {
+                document.body.appendChild(document.createElement('app-root'));
+
+                var js = document.createElement('script');
+                js.type = 'module';
+                js.src = '/wichteln/main.js';
+                js.onload = function () {
+                    // Spinner erst ausblenden, wenn die App übernimmt
+                    requestAnimationFrame(function () {
+                        root.classList.add('wichteln-ready');
+                    });
+                };
+                js.onerror = function () {
+                    root.classList.remove('wichteln');
+                    document.querySelector('.container p').textContent =
+                        'Das Wichteln ist gerade nicht erreichbar. Bitte später noch einmal versuchen.';
+                };
+                document.body.appendChild(js);
+            });
+        })();
+    </script>
 </head>
 <body>
     <div class="container">

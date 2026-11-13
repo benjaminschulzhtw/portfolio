@@ -1,0 +1,152 @@
+<app-sky />
+
+<main class="shell">
+  <header class="head">
+    <p class="eyebrow glass">Wichteln 2026</p>
+    <h1 class="title">Wen beschenkst du?</h1>
+  </header>
+
+  <section class="stage" [class.stage-play]="onStage()" aria-live="polite">
+    @if (onStage()) {
+      <div class="prompt" [class.gone]="opened()">
+        <div
+          class="hits glass"
+          role="img"
+          [attr.aria-label]="'Noch ' + hitsLeft() + ' von ' + hitsNeeded + ' Treffern'"
+        >
+          @for (used of hitSlots(); track $index) {
+            <svg class="hit" [class.used]="used" viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                d="M12 2v20M3.3 7l17.4 10M3.3 17L20.7 7M9 3.5l3 2.5 3-2.5M9 20.5l3-2.5 3 2.5M3 10.5l3.7.8-1.2 3.6M21 13.5l-3.7-.8 1.2-3.6M3 13.5l3.7-.8-1.2-3.6M21 10.5l-3.7.8 1.2 3.6"
+              />
+            </svg>
+          }
+        </div>
+        <p class="tap-hint">Tippe auf das Geschenk</p>
+      </div>
+
+      <div
+        class="scene"
+        [class.opened]="opened()"
+        [class.waiting]="phase() === 'decrypting'"
+        [class.revealed]="phase() === 'revealed'"
+        [class.popped]="popped()"
+        [class.front]="front()"
+      >
+        <!-- Goblin sitzt im Karton und springt beim Aufdecken heraus -->
+        @if (goblinReady()) {
+          <figure #goblin class="goblin" [attr.aria-hidden]="phase() !== 'revealed'">
+            <div class="goblin-inner">
+              <img src="goblin.webp" alt="" width="820" height="1230" decoding="async" />
+              <figcaption #sign class="sign">
+                @if (pairing(); as p) {
+                  <span class="sign-hello">Du wichtelst für:</span>
+                  <span class="sign-name">{{ p.r }}</span>
+                }
+              </figcaption>
+            </div>
+          </figure>
+        }
+
+        <button
+          #gift
+          type="button"
+          class="gift"
+          [attr.aria-label]="giftLabel()"
+          [attr.aria-disabled]="phase() !== 'play'"
+          (click)="onGiftClick($event)"
+        >
+          <svg class="gift-art" viewBox="0 0 200 210" aria-hidden="true">
+            <defs>
+              <linearGradient id="box" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#e8344f" />
+                <stop offset="1" stop-color="#8e0c22" />
+              </linearGradient>
+              <linearGradient id="lid" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#ff5a70" />
+                <stop offset="1" stop-color="#c3142f" />
+              </linearGradient>
+              <linearGradient id="ribbon" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0" stop-color="#f6e7c8" />
+                <stop offset=".5" stop-color="#fffaf0" />
+                <stop offset="1" stop-color="#d9c39a" />
+              </linearGradient>
+              <linearGradient id="glow" x1="0" y1="1" x2="0" y2="0">
+                <stop offset="0" stop-color="#eaf6ff" stop-opacity=".95" />
+                <stop offset="1" stop-color="#bfe6ff" stop-opacity="0" />
+              </linearGradient>
+            </defs>
+            <ellipse cx="100" cy="203" rx="80" ry="7" fill="#000" opacity=".4" />
+            <path class="gift-glow" d="M34 94L-10 -20h220l-44 114z" fill="url(#glow)" />
+            <!-- Karton -->
+            <rect x="26" y="92" width="148" height="108" rx="12" fill="url(#box)" />
+            <rect x="26" y="92" width="148" height="16" fill="#000" opacity=".2" />
+            <rect x="32" y="112" width="8" height="80" rx="4" fill="#fff" opacity=".18" />
+            <rect x="88" y="92" width="24" height="108" fill="url(#ribbon)" />
+            <rect
+              x="26.5"
+              y="92.5"
+              width="147"
+              height="107"
+              rx="11.5"
+              fill="none"
+              stroke="#fff"
+              stroke-opacity=".22"
+            />
+            <!-- Deckel mit Schleife -->
+            <g class="gift-lid">
+              <path d="M100 66c-8-26-46-40-52-18-5 18 28 22 52 18z" fill="url(#ribbon)" />
+              <path d="M100 66c8-26 46-40 52-18 5 18-28 22-52 18z" fill="#e9d6ae" />
+              <rect x="18" y="64" width="164" height="32" rx="10" fill="url(#lid)" />
+              <rect x="24" y="67" width="152" height="6" rx="3" fill="#fff" opacity=".3" />
+              <rect x="86" y="64" width="28" height="32" fill="url(#ribbon)" />
+              <circle cx="100" cy="64" r="10" fill="#fffaf0" />
+            </g>
+          </svg>
+        </button>
+      </div>
+
+      <p class="sr-only" role="status">
+        @switch (phase()) {
+          @case ('decrypting') {
+            Das Geschenk wird geöffnet.
+          }
+          @case ('revealed') {
+            Das Geschenk ist offen. Du wichtelst für {{ pairing()?.r }}.
+          }
+        }
+      </p>
+    } @else {
+      <div class="card glass" [attr.role]="phase() === 'error' ? 'alert' : null">
+        @if (phase() === 'missing') {
+          <p>Hier fehlt dein persönlicher Code.</p>
+          <p class="small">
+            Öffne bitte genau den Link, den du bekommen hast, inklusive allem nach dem #.
+          </p>
+        } @else {
+          @switch (error()) {
+            @case ('network') {
+              <p>Die Lose konnten nicht geladen werden.</p>
+              <p class="small">Prüfe deine Internetverbindung und versuche es noch einmal.</p>
+              <button hlmBtn type="button" class="glass-btn" (click)="retry()">
+                Nochmal versuchen
+              </button>
+            }
+            @case ('insecure') {
+              <p>Dein Browser blockiert das Entschlüsseln.</p>
+              <p class="small">
+                Öffne den Link bitte direkt in Safari oder Chrome („Im Browser öffnen“).
+              </p>
+            }
+            @default {
+              <p>Dieser Link passt zu keinem Los.</p>
+              <p class="small">
+                Prüfe, ob der Link vollständig kopiert wurde, inklusive allem nach dem #.
+              </p>
+            }
+          }
+        }
+      </div>
+    }
+  </section>
+</main>
