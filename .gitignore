@@ -10,5 +10,5 @@ wichteln-app/test-results/
 wichteln-app/playwright-report/
 wichteln-app/e2e/.fixture/
 
-# Persönliche Wichtel-Links: niemals committen
-wichteln-app/scripts/links.local.*
+# Namen der Teilnehmenden und ihre persönlichen Links: niemals committen
+wichteln-app/scripts/*.local.*

@@ -16,11 +16,14 @@ npm ci
 
 ## Neue Wichtel-Runde
 
-1. Namen als JSON-Liste ablegen (Vorlage: `scripts/participants.example.json`).
+1. Namen als JSON-Liste in `scripts/teilnehmer.local.json` ablegen
+   (Vorlage: `scripts/participants.example.json`). Alles unter `scripts/` mit `.local.`
+   im Namen ist von Git ausgeschlossen, die echten Namen landen also nie im Repo.
+
 2. Lose und Links erzeugen:
 
    ```bash
-   npm run generate -- teilnehmer.json --base https://schulz-benjamin.de/
+   npm run generate -- scripts/teilnehmer.local.json --base https://schulz-benjamin.de/
    ```
 
    - `public/data/pairs.json`: nur verschlüsselte Lose, darf veröffentlicht werden.

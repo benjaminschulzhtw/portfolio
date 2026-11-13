@@ -45,7 +45,7 @@ Thumbs.db
 
 # Wichteln
 .nx/
-scripts/links.local.*
+scripts/*.local.*
 /playwright-report/
 /test-results/
 /e2e/.fixture/
