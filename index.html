@@ -43,8 +43,29 @@
             theme.content = '#050a1c';
             document.head.appendChild(theme);
 
-            // Eigene Dateien der Startseite auf feste Adressen festnageln, bevor die Basis wechselt
-            // (das Favicon wird sonst später im App-Ordner gesucht).
+            // Styles der Platzhalterseite abwerfen: Der zentrierte Flex-Body würde die App
+            // sonst an den Rand drücken. Alles, was der Spinner braucht, steht hier direkt,
+            // damit eine ältere style.css aus dem Browser-Cache nichts kaputt machen kann.
+            var siteCss = document.querySelector('link[rel="stylesheet"]');
+            if (siteCss) siteCss.parentNode.removeChild(siteCss);
+
+            var overlay = document.createElement('style');
+            overlay.textContent =
+                'html,body{margin:0;background:#050a1c;color:#f4f8ff;' +
+                'font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,Roboto,Arial,sans-serif}' +
+                '.container{position:fixed;inset:0;z-index:10;display:flex;flex-direction:column;' +
+                'justify-content:center;align-items:center;background:#050a1c;transition:opacity .4s ease-out}' +
+                '.container p{margin:15px 0 0;font-size:15px}' +
+                '.loader{width:50px;height:50px;border:5px solid #26324f;border-top-color:#fff;' +
+                'border-radius:50%;animation:wichteln-spin 1s linear infinite}' +
+                '@keyframes wichteln-spin{to{transform:rotate(360deg)}}' +
+                'html.wichteln-ready .container{opacity:0;visibility:hidden;pointer-events:none;' +
+                'transition:opacity .4s ease-out,visibility 0s linear .4s}' +
+                '@media (prefers-reduced-motion:reduce){.loader{animation-duration:3s}}';
+            document.head.appendChild(overlay);
+
+            // Favicon auf eine feste Adresse nageln, bevor die Basis wechselt
+            // (es wird sonst später im App-Ordner gesucht).
             var links = document.querySelectorAll('link[href]');
             for (var i = 0; i < links.length; i++) links[i].href = links[i].href;
 
@@ -71,7 +92,7 @@
                     });
                 };
                 js.onerror = function () {
-                    root.classList.remove('wichteln');
+                    document.querySelector('.loader').style.display = 'none';
                     document.querySelector('.container p').textContent =
                         'Das Wichteln ist gerade nicht erreichbar. Bitte später noch einmal versuchen.';
                 };

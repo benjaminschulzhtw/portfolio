@@ -369,13 +369,32 @@ export class App {
       .then(() => el.remove());
   }
 
-  /** Im flachen Querformat darf der Goblin nur bis zum unteren Rand reichen (dort läuft er weich aus). */
+  /**
+   * Größe des Goblins an den Platz anpassen: nach oben bis knapp unter die Überschrift,
+   * nach unten (flaches Querformat) bis zum Bildschirmrand, wo er weich ausläuft.
+   */
   private sizeGoblin(): void {
     const goblin = this.goblin()?.nativeElement;
     const scene = goblin?.offsetParent as HTMLElement | null;
     if (!goblin || !scene) return;
-    const top = scene.getBoundingClientRect().top + goblin.offsetTop;
+    const box = scene.getBoundingClientRect();
+
+    const top = box.top + goblin.offsetTop;
     goblin.style.setProperty('--goblin-max-h', `${Math.max(120, innerHeight - top - 6)}px`);
+
+    // Im flachen Querformat steht der Goblin oben fest und läuft unten aus: dort nicht begrenzen.
+    // Welcher Fall gilt, entscheidet --goblin-mode in styles.css.
+    const mode = getComputedStyle(document.documentElement).getPropertyValue('--goblin-mode').trim();
+    if (mode === 'crop') {
+      goblin.style.removeProperty('--goblin-max-w');
+      return;
+    }
+    // Standlinie ist der untere Rand des Geschenks; darüber muss die Überschrift frei bleiben
+    const ground = box.bottom - box.height * 0.02;
+    const title = document.querySelector('.title')?.getBoundingClientRect();
+    const room = ground - (title?.bottom ?? 0) - 12;
+    const ratio = 1536 / 1024; // Seitenverhältnis des Bildes
+    goblin.style.setProperty('--goblin-max-w', `${Math.max(120, room / ratio)}px`);
   }
 
   /** Größte Schrift wählen, die auf dem Schild des Goblins noch Platz hat. */

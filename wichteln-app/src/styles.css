@@ -23,6 +23,8 @@
   --ink: #0b1530;
   --gift-w: min(64vw, 260px, 35svh);
   --goblin-w: min(80vw, 360px, calc((100svh - 210px) / 1.5));
+  /* steuert sizeGoblin(): "fit" = Höhe bis unter die Überschrift, "crop" = unten auslaufen lassen */
+  --goblin-mode: fit;
 }
 
 /* ---------- Grundlagen (mobile first, Basis ca. 360 px) ---------- */
@@ -306,8 +308,9 @@ textarea {
   z-index: 1;
   left: 50%;
   bottom: 2%;
-  width: var(--goblin-w);
-  margin: 0 0 0 calc(var(--goblin-w) / -2);
+  /* --goblin-max-w setzt sizeGoblin(), damit das Schild die Überschrift nie verdeckt */
+  width: min(var(--goblin-w), var(--goblin-max-w, 100vw));
+  margin: 0 0 0 calc(min(var(--goblin-w), var(--goblin-max-w, 100vw)) / -2);
   opacity: 0;
   transform-origin: 50% 100%;
   will-change: transform;
@@ -487,12 +490,26 @@ button.glass-btn {
   }
 }
 
+/* Großer Bildschirm: mittig statt am unteren Rand, und alles eine Nummer größer.
+   Die Höhe wird mitgeprüft, damit flache Fenster weiter die Querformat-Regeln bekommen. */
+@media (min-width: 768px) and (min-height: 560px) {
+  :root {
+    --gift-w: min(300px, 30svh);
+    --goblin-w: min(440px, calc((100svh - 230px) / 1.5));
+  }
+  .stage-play {
+    justify-content: center;
+    padding-bottom: 0;
+  }
+}
+
 /* ---------- Querformat am Handy: wenig Höhe ---------- */
 
 @media (max-height: 500px) and (orientation: landscape) {
   :root {
     --gift-w: min(36vw, 220px, 55svh);
     --goblin-w: min(42vw, 290px);
+    --goblin-mode: crop;
   }
   .shell {
     padding-top: calc(env(safe-area-inset-top) + 44px);
